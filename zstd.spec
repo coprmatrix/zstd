@@ -77,11 +77,14 @@ Needed for compiling programs that link with the library.
 Summary:        zstd and zlib based gzip drop-in
 Group:          Productivity/Archiving/Compression
 Requires:       %{name} >= %{version}
-Conflicts:      busybox-gzip
-Conflicts:      gzip
-Conflicts:      alternative(gzip)
-Provides:       gzip
-Provides:       alternative(gzip)
+Conflicts: /bin/gunzip
+Conflicts: /bin/gzip
+Conflicts: /bin/zcat
+Provides: /bin/gunzip
+Provides: /bin/gzip
+Provides: /bin/zcat
+Provides: gzip
+
 
 %description gzip
 Zstd, short for Zstandard, is a lossless compression algorithm,
@@ -146,6 +149,7 @@ ln -s zstdcat %{buildroot}/%{_bindir}/zcat
 %{_bindir}/zstdless
 %{_bindir}/zstdmt
 %{_mandir}/man1/*.1%{?ext_man}
+%{_defaultdocdir}/%{name}/%{name}_manual.html
 
 %files -n %{libname}
 %license COPYING LICENSE
