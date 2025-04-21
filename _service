@@ -1,0 +1,10 @@
+<services>
+  <service name="download_url">
+    <param name="url">https://api.github.com/repos/facebook/zstd/releases/latest</param> 
+  </service>
+  <service name="set_version">
+    <param name="fromfile">_service:download_url:latest</param>
+    <param name="regex">.*"tag_name"\s*:\s*"v(.*)"</param>
+  </service>
+  <service name="download_files" />
+</services>
